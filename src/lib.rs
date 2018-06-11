@@ -1,9 +1,9 @@
 use std::default::Default;
 use std::fs::{File, OpenOptions};
-use std::io::Read;
 use std::io;
+use std::io::Read;
 use std::io::Write;
-use std::path::{PathBuf};
+use std::path::PathBuf;
 
 pub struct Brightness {
     backend: String,
@@ -15,7 +15,7 @@ impl std::default::Default for Brightness {
         return Brightness {
             backend: "intel_backlight".to_string(),
             max_brightness: 0,
-        }
+        };
     }
 }
 
@@ -33,9 +33,7 @@ impl Brightness {
 
         match content.trim().parse::<i32>() {
             Ok(value) => Ok(value),
-            Err(_) => {
-                Ok(-1)
-            }
+            Err(_) => Ok(-1),
         }
     }
 
@@ -57,7 +55,7 @@ impl Brightness {
 
         match file.write_all(value.to_string().as_bytes()) {
             Ok(_) => Ok(true),
-            Err(err) => Err(err)
+            Err(err) => Err(err),
         }
     }
 
@@ -85,5 +83,4 @@ impl Brightness {
         let value = value as i32;
         return self.set_brightness(value as i32);
     }
-
 }
