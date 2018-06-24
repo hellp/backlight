@@ -10,7 +10,7 @@ pub struct Brightness {
     max_brightness: i32,
 }
 
-impl std::default::Default for Brightness {
+impl Default for Brightness {
     fn default() -> Brightness {
         return Brightness {
             backend: "intel_backlight".to_string(),
